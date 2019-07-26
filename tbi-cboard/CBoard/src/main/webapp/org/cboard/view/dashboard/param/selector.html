@@ -1,0 +1,195 @@
+<script>
+    var lang = localStorage.getItem('lang') == 'en' ? 'en' : 'zh-cn' // 设置时间选择控件的语言
+</script>
+
+<div ng-if="param.paramType == 'selector'" class="btn-group filter-item">
+    <div class="btn-group">
+        <button type="button" class="btn btn-sm" title="{{param.title}}"
+            ng-class="{true:'btn-primary',false:'btn-default'}[param.values.length>0]">
+            {{param.name}}
+        </button>
+        <button type="button" class="btn btn-sm dropdown-toggle"
+            ng-class="{true:'btn-primary',false:'btn-default'}[param.values.length>0]" ng-click="editParam()">
+            <span class="fa fa-edit"></span>
+        </button>
+    </div>
+</div>
+<!-- <div ng-if="param.paramType == 'selector'" class="btn-group filter-item">
+    <div class="form-inline" style="padding-right: 10px;">
+        <label class="filter-label">{{param.name}}</label>
+        <input type="text" class="form-control" ng-click="editParam()">
+    </div>
+</div> -->
+
+<div ng-if="param.paramType == 'date_section'" class="btn-group filter-item">
+    <div class="form-inline">
+        <label class="filter-label">{{param.name}}</label>
+        <div class="wrap-flex">
+            <div class="pos-relative">
+                <input ng-model="param.values[0]" ng-blur="filterValueChange($event, 0, true)" type='text'
+                    class="form-control datetimepickerInput" />
+            </div>
+            <span class="filter-span-fit">--</span>
+            <div class="pos-relative">
+                <input ng-model="param.values[1]" ng-blur="filterValueChange($event, 1, true)" type='text'
+                    class="form-control datetimepickerInput" />
+            </div>
+        </div>
+
+    </div>
+    <script>
+        $('.datetimepickerInput').datetimepicker({
+            locale: lang,
+            format: 'YYYY-MM-DD',
+            // defaultDate: '' // 改造控件，使其自动获取触发标签input的value
+        });
+    </script>
+</div>
+
+<div ng-if="param.paramType == 'datetime_section'" class="btn-group filter-item">
+    <div class="form-inline">
+        <label class="filter-label">{{param.name}}</label>
+        <div class="wrap-flex">
+            <div class="pos-relative">
+                <input ng-model="param.values[0]" ng-blur="filterValueChange($event, 0, true)" type='text'
+                    class="form-control datetimepickerInput" />
+            </div>
+            <span class="filter-span-fit">--</span>
+            <div class="pos-relative">
+                <input ng-model="param.values[1]" ng-blur="filterValueChange($event, 1 , true)" type='text'
+                    class="form-control datetimepickerInput" />
+            </div>
+        </div>
+    </div>
+    <script>
+        $('.datetimepickerInput').datetimepicker({
+            locale: lang,
+            format: 'YYYY-MM-DD HH:mm:ss',
+            // defaultDate: '' // 改造控件，使其自动获取触发标签input的value
+        });
+    </script>
+</div>
+
+<div ng-if="param.paramType == 'range_section'" class="btn-group filter-item">
+    <div class="form-inline">
+        <label class="filter-label">{{param.name}}</label>
+        <div class="wrap-flex">
+            <input ng-model="param.values[0]" ng-blur="filterValueChange($event, 0, true)" type='text'
+                class="form-control" />
+            <span class="filter-span-fit">--</span>
+            <input ng-model="param.values[1]" ng-blur="filterValueChange($event, 1, true)" type='text'
+                class="form-control" />
+        </div>
+
+    </div>
+</div>
+
+<div ng-if="param.paramType == 'date'" class="btn-group filter-item">
+    <div class="form-inline">
+        <label class="filter-label">{{param.name}}</label>
+        <div class="pos-relative">
+            <input ng-model="param.values[0]" ng-blur="filterValueChange($event, 0)" type='text'
+                class="form-control datetimepickerInput" />
+        </div>
+    </div>
+    <script>
+        $('.datetimepickerInput').datetimepicker({
+            locale: lang,
+            format: 'YYYY-MM-DD',
+            // defaultDate: '' // 改造控件，使其自动获取触发标签input的value
+        });
+    </script>
+</div>
+
+<div ng-if="param.paramType == 'datetime'" class="btn-group filter-item">
+    <div class="form-inline">
+        <label class="filter-label">{{param.name}}</label>
+        <div class="pos-relative">
+            <input ng-model="param.values[0]" ng-blur="filterValueChange($event, 0)" type='text'
+                class="form-control datetimepickerInput" />
+        </div>
+    </div>
+    <script>
+        $('.datetimepickerInput').datetimepicker({
+            locale: lang,
+            format: 'YYYY-MM-DD HH:mm:ss',
+            // defaultDate: '' // 改造控件，使其自动获取触发标签input的value
+        });
+    </script>
+</div>
+
+<div ng-if="param.paramType == 'year'" class="btn-group filter-item">
+    <div class="form-inline">
+        <label class="filter-label">{{param.name}}</label>
+        <div class="pos-relative">
+            <input ng-model="param.values[0]" ng-blur="filterValueChange($event, 0)" type='text'
+                class="form-control datetimepickerInput" />
+        </div>
+    </div>
+    <script>
+        $('.datetimepickerInput').datetimepicker({
+            locale: lang,
+            viewMode: 'years',
+            format: 'YYYY',
+            // defaultDate: '' // 改造控件，使其自动获取触发标签input的value
+        });
+    </script>
+</div>
+
+<div ng-if="param.paramType == 'month'" class="btn-group filter-item">
+    <div class="form-inline">
+        <label class="filter-label">{{param.name}}</label>
+        <div class="pos-relative">
+            <input ng-model="param.values[0]" ng-blur="filterValueChange($event, 0)" type='text'
+                class="form-control datetimepickerInput" />
+        </div>
+    </div>
+    <script>
+        $('.datetimepickerInput').datetimepicker({
+            locale: lang,
+            viewMode: 'months',
+            format: 'MM',
+            // defaultDate: '' // 改造控件，使其自动获取触发标签input的value
+        });
+    </script>
+</div>
+
+<div ng-if="param.paramType == 'day'" class="btn-group filter-item">
+    <div class="form-inline">
+        <label class="filter-label">{{param.name}}</label>
+        <div class="pos-relative">
+            <input ng-model="param.values[0]" ng-blur="filterValueChange($event, 0)" type='text'
+                class="form-control datetimepickerInput" />
+        </div>
+    </div>
+    <script>
+        $('.datetimepickerInput').datetimepicker({
+            locale: lang,
+            viewMode: 'days',
+            format: 'DD',
+            // defaultDate: '' // 改造控件，使其自动获取触发标签input的value
+        });
+    </script>
+</div>
+
+<div ng-if="param.paramType == 'input'" class="btn-group filter-item">
+    <div class="form-inline">
+        <label class="filter-label">{{param.name}}</label>
+        <div>
+            <input ng-model="param.values[0]" ng-blur="filterValueChange($event, 0)" type='text' class="form-control" />
+        </div>
+    </div>
+</div>
+
+<div ng-if="param.paramType == 'select'" class="btn-group filter-item">
+    <div class="form-inline">
+        <label class="filter-label">{{param.name}}</label>
+        <div>
+            <select class="form-control" ng-init="selectValue=param.values[0]" ng-model="selectValue"
+                ng-change="filterValueChange($event, 0, false, selectValue)">
+                <option value="">{{"COMMON.PLEASECHOOSE" | translate}}</option>
+                <option ng-repeat="selectValue in param.selects" ng-value="{{selectValue}}">{{selectValue}}</option>
+            </select>
+        </div>
+    </div>
+</div>

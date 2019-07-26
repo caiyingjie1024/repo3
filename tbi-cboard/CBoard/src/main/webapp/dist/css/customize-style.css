@@ -1,0 +1,92 @@
+/* 通用样式 begin */
+
+.wrap-flex {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.pos-relative{
+    position: relative;
+}
+
+/* 通用样式 end */
+
+/* logo begin */
+
+.logo-lg{
+    height: 53px;
+    padding: 6px 0;
+}
+.logo-lg b{
+    display: block;
+    height: 100%;
+    background: url(../../imgs/0logo.png) no-repeat center;
+    background-size: contain;
+}
+
+/* language-bar begin */
+
+.language-bar{
+    float: right;
+    height: 50px;
+    line-height: 50px;
+    padding-right: 10px;
+    color: #fff;
+    cursor: pointer;
+}
+
+/* language-bar end */
+
+.modal-fit .modal-dialog {
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    padding: 50px;
+}
+
+.modal-fit .modal-body {
+    height: calc(100vh - 200px);
+    overflow: auto;
+}
+
+@media (min-width: 768px) {
+    .modal-fit .modal-dialog {
+        width: auto;
+    }
+    .navbar-nav > li > a {
+        padding-bottom: 18px;
+    }
+}
+
+/* 过滤条件搜索栏 begin */
+
+.filter-item {
+    margin: 5px 0 0 5px;
+}
+
+.filter-item>div {
+    display: flex;
+    flex-wrap: wrap;
+    padding-right: 10px;
+}
+
+.filter-label {
+    margin: 7px 5px 0 0;
+    font-weight: normal;
+    font-size: 14px;
+}
+
+.filter-span-fit {
+    padding-top: 3px;
+}
+
+@media (max-width: 500px) {
+    .filter-span-fit {
+        padding: 0;
+        width: 100%;
+    }
+}
+
+/* 过滤条件搜索栏 end */
